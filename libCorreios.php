@@ -5,9 +5,14 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @author Mateus Marques
  */
-class libCorreios {
+class LibCorreios {
     private $endereco;
     private $calculo;
+    
+    public function __construct() {
+        $this->endereco = new stdClass();
+        $this->calculo = new stdClass();
+    }
 
     /*
      * Metodo "calcularFrete($arrConfig)" realiza o calculo do frete, e o prazo aproximados
@@ -58,6 +63,7 @@ class libCorreios {
             'StrRetorno=xml',
             'nIndicaCalculo=3'
         );
+        $url .= implode('&', $arr);
         
         $xml = simplexml_load_file($url);
         if($xml->cServico->Erro == 0){
@@ -75,7 +81,7 @@ class libCorreios {
 
     /*
      * Metodo "buscaCep($cep)" valida e realiza a busca por cep no Webservice dos Correios
-     * O metodo recebe como parametro o cep a ser buscado, no formado: 99999-999
+     * O metodo recebe como parametro o cep a ser buscado, no formado: 99999999
      * Em caso de ERRO, sera retornado o seguinte objeto
      *      $obj->endereco->msgErro     // informando o erro na requisicao
      *      $obj->endereco->status      // FALSE
