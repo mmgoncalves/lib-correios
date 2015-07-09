@@ -34,7 +34,7 @@ __O método vai retornar um objeto com as seguintes informações:__
 ## Método _buscaCep($cep)_
 Realiza uma busca no Webservice dos Correios, retornando o endereço do CEP informado.
 
-__O método recebe como parâmetro o CEP a ser buscado, no formado: 99999-999__
+__O método recebe como parâmetro o CEP a ser buscado, no formado: 99999999__
 * $obj->endereco->logradouro
 * $obj->endereco->cep
 * $obj->endereco->bairro
